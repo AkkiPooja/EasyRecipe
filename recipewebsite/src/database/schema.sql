@@ -10,7 +10,6 @@ CREATE TABLE if not exists User(
  id int NOT NULL AUTO_INCREMENT,
  name varchar(255) NOT NULL,
  password varchar(255) NOT NULL,
- user_type enum('USER', 'AUTHOR'),
  PRIMARY KEY (id)
 );
 
@@ -29,5 +28,3 @@ total_views int,
 PRIMARY KEY (id),
 FOREIGN KEY (user_id) REFERENCES User(id)
 );
-
-

@@ -20,17 +20,17 @@ const Login = props =>  {
          // Connectinf from front end to backend
          fetch(`http://localhost:8080/user?name=${name}&password=${password}`,{
            method:"GET"
-         }).then(res=>res.text())
+         }).then(res=>res.json())
          .then((result)=>{
             result === ''?
             alert("No account with such details")
             :
-            nextPage();
+            nextPage(result);
            })
      }
 
-    function nextPage(){
-        history.push('/search');
+    function nextPage(result){
+        history.push('/search',result);
         window.location.reload(false);
         
       }

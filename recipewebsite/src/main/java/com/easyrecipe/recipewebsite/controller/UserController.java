@@ -1,5 +1,6 @@
 package com.easyrecipe.recipewebsite.controller;
 
+import com.easyrecipe.recipewebsite.model.Recipe;
 import com.easyrecipe.recipewebsite.model.User;
 import com.easyrecipe.recipewebsite.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,12 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @PostMapping("")
+    public String saveUser(@RequestBody User user){
+        userService.saveUser(user);
+        return "Your user is added";
+    }
 
     @GetMapping("")
     public Optional<User> getRecipeByNameAndPassword(@RequestParam("name") String name, @RequestParam("password") String password){

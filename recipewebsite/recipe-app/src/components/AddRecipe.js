@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useHistory, useLocation } from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import { Container ,Paper, Button} from '@material-ui/core';
@@ -13,15 +14,22 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function AddRecipe() {
+const  AddRecipe = props => {
+  const location = useLocation();
+    let history = useHistory();
     const paperStyle={padding:'50px 20px', width:600,margin:"20px auto"}
     const classes = useStyles();
-    const [user_id, setUserId] = useState('')
+    const [user_id, setUserId] = useState(location.state.id)
     const [author_name, setAuthourName] = useState('')
     const[recipe_name, setRecipeName] = useState('')
     const[cook_time, setCookTime] = useState('')
     const[total_time, setTotalTime] = useState('')
     const[description, setDescription] = useState('')
+
+    useEffect(() => {
+      console.log(location.pathname); // result: '/secondpage'
+      console.log(location.state);
+   }, [location]);
 
     //onclick handling
     const handleEvent=(e)=>{
@@ -36,6 +44,8 @@ export default function AddRecipe() {
         }).then(()=>{
             console.log("New Recipe added")
             alert("Your Recipe is added!!!!")
+            history.push('/addRecipe');
+            window.location.reload(false);
         })
     }
     
@@ -45,13 +55,8 @@ export default function AddRecipe() {
         <h1 style={{color:"lightred"}}>Add Recipe</h1>
     <form className={classes.root} noValidate autoComplete="off">
     
-    <TextField id="outlined-basic" label="UserId" variant="outlined" fullWidth
-     value={user_id}
-     onChange={(e) => setUserId(e.target.value)}
-    />
     <TextField id="outlined-basic" label="AuthorName" variant="outlined" fullWidth
-     value={author_name}
-     onChange={(e) => setAuthourName(e.target.value)}
+     value={location.state.name}
     />
     <TextField id="outlined-basic" label="RecipeName" variant="outlined" fullWidth
      value={recipe_name}
@@ -78,3 +83,5 @@ export default function AddRecipe() {
     </Container>
   );
 }
+
+export default AddRecipe;

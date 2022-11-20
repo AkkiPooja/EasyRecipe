@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 //import history from './history';
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 
 import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
@@ -61,12 +61,15 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 const  SearchRecipe = props => {
+    const location = useLocation();
     let history = useHistory();
     const [recipe_name, setRecipeName] = useState('')
     const[recipes,setRecipes]=useState([])
+    // const [author_name, setAuthourName] = useState('')
+    // const [user_id, setUserId] = useState('')
     
      
-    //state={data:""}
+   
 
       const handleEvent=(e)=>{
        // e.preventDefault();
@@ -83,6 +86,12 @@ const  SearchRecipe = props => {
     
      function refreshPage(value){
         history.push('/RecipeById',value);
+        window.location.reload(false);
+        
+      }
+
+      function addRecipePage(result){
+        history.push('/addRecipe',result);
         window.location.reload(false);
         
       }
@@ -110,6 +119,7 @@ const  SearchRecipe = props => {
           >
             Search for the Recipe in the search bar
           </Typography>
+          <Button variant="contained" color="secondary" onClick={() => addRecipePage(location.state)}>Add Recipe</Button>
           <Search>
             <SearchIconWrapper>
               <SearchIcon />

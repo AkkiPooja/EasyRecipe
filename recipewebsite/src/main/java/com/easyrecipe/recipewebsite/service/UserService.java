@@ -7,5 +7,6 @@ import java.util.Optional;
 
 public interface UserService {
 
+    public User saveUser(User user);
     public Optional<User> getRecipeByNameAndPassword(String name, String password);
 }
