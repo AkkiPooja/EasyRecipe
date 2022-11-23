@@ -10,4 +10,5 @@ public class RecipewebsiteApplication {
 		SpringApplication.run(RecipewebsiteApplication.class, args);
 	}
 
+
 }

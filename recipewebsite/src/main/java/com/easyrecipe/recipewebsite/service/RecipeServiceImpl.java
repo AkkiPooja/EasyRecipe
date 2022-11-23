@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
@@ -34,7 +35,19 @@ public class RecipeServiceImpl implements RecipeService{
     }
 
     @Override
-    public List<Recipe> findByRecipeNameLike(@Param("recipe_name") String recipe_name) {
-        return recipeRepository.findByRecipeNameLike(recipe_name);
+    public Optional< List<Recipe> > findByRecipeByQueryParams(@RequestParam(required = false) String recipe_name, @RequestParam(required = false) Integer user_id) {
+          if(recipe_name != null){
+              return recipeRepository.findByRecipeNameLike(recipe_name);
+          }
+
+          if(user_id > 0){
+              return recipeRepository.findByUserId(user_id);
+          }
+        return null;
+    }
+
+    @Override
+    public void delete(Integer id) {
+         recipeRepository.deleteById(id);
     }
 }

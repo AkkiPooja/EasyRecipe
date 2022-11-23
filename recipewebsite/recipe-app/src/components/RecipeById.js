@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useHistory } from "react-router-dom";
+import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
@@ -13,14 +14,15 @@ const Item = styled(Paper)(({ theme }) => ({
   }));
 
 const RecipeById = props => {
+   let history = useHistory();
     const location = useLocation();
     
     const[recipe,setRecipe]=useState([])
 
-    // useEffect(() => {
-    //    console.log(location.pathname); // result: '/secondpage'
-    //    console.log(location.state);
-    // }, [location]);
+    function handleBackEvent(){
+      history.push('/');
+      window.location.reload(false);
+    }
     
     useEffect(()=>{
         fetch(`http://localhost:8080/recipes/${location.state}`)
@@ -41,6 +43,8 @@ const RecipeById = props => {
                 <Item>Description: {recipe.description}</Item>
                 <Item>Author: {recipe.author_name}</Item>
               </Stack>
+              <br/>
+              <Button variant="contained" color="secondary" onClick={handleBackEvent}>Logout</Button>
         </div>
         
     )

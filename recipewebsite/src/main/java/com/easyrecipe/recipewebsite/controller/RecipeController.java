@@ -1,10 +1,12 @@
 package com.easyrecipe.recipewebsite.controller;
 
+import com.easyrecipe.recipewebsite.exception.RecipeNotFoundException;
 import com.easyrecipe.recipewebsite.model.Recipe;
 import com.easyrecipe.recipewebsite.service.RecipeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,14 +32,49 @@ public class RecipeController {
     }
 
     @GetMapping("/{id}")
-    public Recipe getRecipeById(@PathVariable Integer id){
-        Optional<Recipe> recipe = recipeService.getRecipeById(id);
+    public Optional<Recipe> getRecipeById(@PathVariable Integer id){
+        Optional<Recipe> recipe =recipeService.getRecipeById(id);
 
-        return recipe.isPresent()? recipe.get(): null;
+
+        if(!recipe.isPresent()) throw new RecipeNotFoundException();
+
+        return recipe;
     }
 
     @GetMapping("")
-    public List<Recipe> findByRecipeNameLike(@Param("recipe_name") String recipe_name){
-        return  recipeService.findByRecipeNameLike(recipe_name);
+    public Optional< List<Recipe> > findRecipeByQueryParams(@RequestParam(required = false) String recipe_name, @RequestParam(required = false) Integer user_id){
+        Optional< List<Recipe> > recipe =recipeService.findByRecipeByQueryParams(recipe_name, user_id);
+
+        System.out.println(recipe+" "+recipe.isEmpty()+" "+recipe.isPresent()+" "+recipe.get().isEmpty());
+
+        if(recipe.get().isEmpty()) throw new RecipeNotFoundException();
+
+        return recipe;
     }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    public String update(@RequestBody Recipe recipe, @PathVariable Integer id) {
+
+        recipeService.saveRecipe(recipe);
+        return "Updated";
+
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteRecipeById(@PathVariable Integer id){
+        Optional<Recipe> recipe =recipeService.getRecipeById(id);
+
+
+        if(!recipe.isPresent()) throw new RecipeNotFoundException();
+
+        recipeService.delete(id);
+
+
+//        if (!isRemoved) {
+//            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+//        }
+//
+//        return new ResponseEntity<>(id, HttpStatus.OK);
+    }
+
 }

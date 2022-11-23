@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {  useState } from 'react';
 import { useHistory, useLocation } from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
@@ -19,17 +19,14 @@ const  AddRecipe = props => {
     let history = useHistory();
     const paperStyle={padding:'50px 20px', width:600,margin:"20px auto"}
     const classes = useStyles();
-    const [user_id, setUserId] = useState(location.state.id)
-    const [author_name, setAuthourName] = useState('')
+    const user_id = location.state.id
+    const author_name = location.state.name
     const[recipe_name, setRecipeName] = useState('')
     const[cook_time, setCookTime] = useState('')
     const[total_time, setTotalTime] = useState('')
     const[description, setDescription] = useState('')
 
-    useEffect(() => {
-      console.log(location.pathname); // result: '/secondpage'
-      console.log(location.state);
-   }, [location]);
+   
 
     //onclick handling
     const handleEvent=(e)=>{
@@ -43,10 +40,15 @@ const  AddRecipe = props => {
           body: JSON.stringify(recipe)
         }).then(()=>{
             console.log("New Recipe added")
-            alert("Your Recipe is added!!!!")
-            history.push('/addRecipe');
+            alert("Your Recipe is added, log back to see the details")
+            history.push('/');
             window.location.reload(false);
         })
+    }
+
+    function handleBackEvent(){
+      history.push('/search');
+      window.location.reload(false);
     }
     
   return (
@@ -77,6 +79,9 @@ const  AddRecipe = props => {
 
     <Button variant="contained" color="secondary" onClick={handleEvent}>
         Submit
+    </Button>
+    <Button variant="contained" color="secondary" onClick={handleBackEvent}>
+        Back
     </Button>
     </form>
     </Paper>
