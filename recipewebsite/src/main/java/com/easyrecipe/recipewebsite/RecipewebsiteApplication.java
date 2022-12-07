@@ -10,5 +10,8 @@ public class RecipewebsiteApplication {
 		SpringApplication.run(RecipewebsiteApplication.class, args);
 	}
 
-
 }
+
+// cannot create a duplicate account (different username)
+// getuserdetails
+// JPA handle multiple threads

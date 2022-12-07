@@ -14,4 +14,6 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 
     @Query("select s from User s where s.name = :name and s.password = :password")
     public Optional<User> getRecipeByNameAndPassword(@RequestParam("name") String name, @RequestParam("passowrd") String password);
+    @Query("select s from User s where s.name= :name")
+    public Optional<User> existsByName(String name);
 }
