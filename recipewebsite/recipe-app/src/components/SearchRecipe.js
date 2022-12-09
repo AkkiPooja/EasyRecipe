@@ -21,6 +21,8 @@ const Item = styled(Paper)(({ theme }) => ({
 
 const  SearchRecipe = props => {
     const location = useLocation();
+    console.log("search details got from previous page")
+    console.log(location)
     let history = useHistory();
     const user_id = location.state.id;
    
@@ -32,6 +34,8 @@ const  SearchRecipe = props => {
            // status 404 or 500 will set ok to false
            if (response.ok) {
                     let result = await response.json()
+                    console.log("details being sent from search page to my recipes")
+                    console.log(result)
                     history.push('/myrecipes',result);
                     window.location.reload(false);
            }
@@ -79,7 +83,8 @@ const  SearchRecipe = props => {
       <br/>
       <Button variant="contained" color="secondary" onClick={handleRecipeEvent}>MyRecipes</Button>
       <br/>
-      <Button variant="contained" color="secondary" onClick={handleBackEvent}>Back</Button>
+      <br/>
+      <Button variant="contained" color="secondary" onClick={handleBackEvent}>Logout</Button>
     </Box>
     </Container> 
   );

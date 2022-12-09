@@ -70,23 +70,29 @@ const Login = props =>  {
    
 
       const handleSearch=(e)=>{
-       // e.preventDefault();
         const recipe={recipe_name}
         console.log(recipe)
-        // Connectinf from front end to backend
+  
         fetch(`http://localhost:8080/recipes?recipe_name=${recipe.recipe_name}`,{
           method:"GET"
         }).then(res=>res.json())
         .then((result)=>{
-            setRecipes(result);
+          console.log("******")
+          console.log(result)
+          console.log(result.status)
+           if(result.length ===  undefined){
+            alert("No recipe found!")
+           }else{
+              
+               console.log("Here inside the log")
+             console.log(result)
+             setRecipes(result);
+           }
+            
           })
     }
     
-     function refreshPage(value){
-        history.push('/RecipeById',value);
-        window.location.reload(false);
-        
-      }
+   
 
     const handleEvent=(e)=>{
          // Connectinf from front end to backend
@@ -157,9 +163,11 @@ const Login = props =>  {
         <Typography variant="body2">
           Total Time: {recipe.total_time}
         </Typography>
+        <Typography variant="body2">
+          Description : {recipe.description}
+        </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small" onClick={() => refreshPage(recipe.id)} >Learn More</Button>
       </CardActions>
     </Card>
       ))
@@ -173,7 +181,7 @@ const Login = props =>  {
     />
      <br/>
      <br/>
-    <TextField id="outlined-basic" label="Password" variant="outlined" 
+    <TextField id="outlined-password-inpu" label="Password"  type="password" variant="outlined" 
      value={password}
      onChange={(e) => setPassword(e.target.value)}
     />

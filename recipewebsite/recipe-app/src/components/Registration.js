@@ -53,12 +53,12 @@ export default function Registration() {
      onChange={(e) => setName(e.target.value)}
     />
     <br/>
-    <TextField id="outlined-basic" label="Password" variant="outlined" required
+    <TextField id="outlined-password-input"  type="password"  label="Password" variant="outlined" required
      value={password}
      onChange={(e)=> setPassword(e.target.value)}
     />
     <br/>
-    <TextField id="outlined-basic" label="confirmPassword" variant="outlined" required
+    <TextField  id="outlined-password-input"  type="password"  label="confirmPassword" variant="outlined" required
      value={confirmPassword}
      onChange={(e)=> setconfirmPassword(e.target.value)}
     />

@@ -7,13 +7,13 @@ const DeleteById = props => {
     const location = useLocation();
 
     function handleBackEvent(){
-      history.push('/');
+      history.push('/MyRecipes', location.state.recipes);
       window.location.reload(false);
     }
     
     useEffect(()=>{
         // DELETE request using fetch with error handling
-    fetch(`http://localhost:8080/recipes/${location.state}`, { method: 'DELETE' })
+    fetch(`http://localhost:8080/recipes/${location.state.value}`, { method: 'DELETE' })
     .then(async response => {
         const data = await response.json();
 

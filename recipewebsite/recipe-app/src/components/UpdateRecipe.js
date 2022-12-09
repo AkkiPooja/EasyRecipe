@@ -19,7 +19,6 @@ const UpdateRecipe = props => {
     const location = useLocation();
     const paperStyle={padding:'50px 20px', width:600,margin:"20px auto"}
     const classes = useStyles();
-   // const[recipe_name, setRecipeName] = useState('')
     const[cook_time_api, setCookTime] = useState('')
     const[total_time_api, setTotalTime] = useState('')
     const[description_api, setDescription] = useState('')
@@ -55,17 +54,18 @@ const UpdateRecipe = props => {
             body: JSON.stringify(put_values)
           }).then(()=>{
               console.log("Updated the values")
-              alert("Your Recipe is updated, log back to see the details")
-              history.push('/');
+              alert("Your Recipe is updated")
+              history.push('/MyRecipes', location.state.recipes);
               window.location.reload(false);
           })
     }
 
     useEffect(()=>{
-        fetch(`http://localhost:8080/recipes/${location.state}`)
+        fetch(`http://localhost:8080/recipes/${location.state.id}`)
         .then(res=>res.json())
         .then((result)=>{
-            console.log(location.state)
+            console.log("passing parameters from the details page")
+            console.log(location.state.id)
             setRecipe(result);
         }
       )
@@ -74,7 +74,7 @@ const UpdateRecipe = props => {
     return(
         <Container>
         <Paper elevation={3} style={paperStyle}>
-            <h1 style={{color:"lightred"}}>Update {recipe.recipe_name}</h1>
+            <h1 style={{color:"lightred"}}>Update Recipe {recipe.recipe_name}</h1>
         <form className={classes.root} noValidate autoComplete="off">
        
         <TextField id="filled-basic" label="Old_Cook_Time"  variant="outlined" fullWidth

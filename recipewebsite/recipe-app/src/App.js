@@ -10,6 +10,7 @@ import AddRecipe from './components/AddRecipe';
 import MyRecipes from './components/MyRecipes';
 import UpdateRecipe from './components/UpdateRecipe';
 import DeleteById from './components/DeleteById';
+// import RecipesOnMainPage from './components/RecipesOnMainPage'
 import history from './components/history';
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
           <Route exact path="/addRecipe" component={AddRecipe}/>
           <Route exact path="/recipeById" component={RecipeById}/>
           <Route exact path="/DeleteById" component={DeleteById}/>
+          {/* <Route exact path="/RecipesOnMainPage" component={RecipesOnMainPage}/> */}
         </Switch>
        </Router>
     </div>

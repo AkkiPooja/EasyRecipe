@@ -16,16 +16,18 @@ const Item = styled(Paper)(({ theme }) => ({
 const RecipeById = props => {
    let history = useHistory();
     const location = useLocation();
+    console.log("details from the my recipes page")
+    console.log(location.state.recipes)
     
     const[recipe,setRecipe]=useState([])
 
     function handleBackEvent(){
-      history.push('/');
+      history.push('/MyRecipes', location.state.recipes);
       window.location.reload(false);
     }
     
     useEffect(()=>{
-        fetch(`http://localhost:8080/recipes/${location.state}`)
+        fetch(`http://localhost:8080/recipes/${location.state.value}`)
         .then(res=>res.json())
         .then((result)=>{
             console.log(location.state)
@@ -44,7 +46,7 @@ const RecipeById = props => {
                 <Item>Author: {recipe.author_name}</Item>
               </Stack>
               <br/>
-              <Button variant="contained" color="secondary" onClick={handleBackEvent}>Logout</Button>
+              <Button variant="contained" color="secondary" onClick={handleBackEvent}>Back</Button>
         </div>
         
     )

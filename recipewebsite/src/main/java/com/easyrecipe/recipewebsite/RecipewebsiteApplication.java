@@ -15,3 +15,4 @@ public class RecipewebsiteApplication {
 // cannot create a duplicate account (different username)
 // getuserdetails
 // JPA handle multiple threads
+// cook time is integer

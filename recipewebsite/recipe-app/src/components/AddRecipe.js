@@ -25,6 +25,7 @@ const  AddRecipe = props => {
     const[cook_time, setCookTime] = useState('')
     const[total_time, setTotalTime] = useState('')
     const[description, setDescription] = useState('')
+    const login_details = location.state
 
    
 
@@ -40,16 +41,15 @@ const  AddRecipe = props => {
           body: JSON.stringify(recipe)
         }).then(()=>{
             console.log("New Recipe added")
-            alert("Your Recipe is added, log back to see the details")
-            history.push('/');
+            alert("Your Recipe is added")
+            console.log("Add recipe page sending details to search page")
+            console.log(login_details)
+            history.push('/search',login_details);
             window.location.reload(false);
         })
     }
 
-    function handleBackEvent(){
-      history.push('/search');
-      window.location.reload(false);
-    }
+    
     
   return (
     <Container>
@@ -79,9 +79,6 @@ const  AddRecipe = props => {
 
     <Button variant="contained" color="secondary" onClick={handleEvent}>
         Submit
-    </Button>
-    <Button variant="contained" color="secondary" onClick={handleBackEvent}>
-        Back
     </Button>
     </form>
     </Paper>

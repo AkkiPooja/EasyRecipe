@@ -36,7 +36,7 @@ public class RecipeController {
         Optional<Recipe> recipe =recipeService.getRecipeById(id);
 
 
-        if(!recipe.isPresent()) throw new RecipeNotFoundException();
+        if(!recipe.isPresent()) throw new RecipeNotFoundException("Recipe Not Found");
 
         return recipe;
     }
@@ -47,7 +47,7 @@ public class RecipeController {
 
         System.out.println(recipe+" "+recipe.isEmpty()+" "+recipe.isPresent()+" "+recipe.get().isEmpty());
 
-        if(recipe.get().isEmpty()) throw new RecipeNotFoundException();
+        if(recipe.get().isEmpty()) throw new RecipeNotFoundException("Recipe Not Found");
 
         return recipe;
     }
@@ -65,7 +65,7 @@ public class RecipeController {
         Optional<Recipe> recipe =recipeService.getRecipeById(id);
 
 
-        if(!recipe.isPresent()) throw new RecipeNotFoundException();
+        if(!recipe.isPresent()) throw new RecipeNotFoundException("Recipe Not Found ");
 
         recipeService.delete(id);
 
