@@ -11,8 +11,9 @@ Open terminal and type the following commands
 2. cd EasyRecipe
 3. cd recipewebsite
 4. cd recipe-app 
-5. npm start
-6. your frontend opens at locally <http://localhost:3001/>
+5. npm install (if neccesary)
+6. npm start
+7. your frontend opens at locally <http://localhost:3001/>
 
 To start the spring boot app
 Open another tab in the terminal and type following commands
