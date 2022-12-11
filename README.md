@@ -1,6 +1,5 @@
 # EasyRecipe
-Easy Recipe is a website 
-
+Easy Recipe is a website which helps to cook delicious dishes and the user an login to add his own recipes which can be used by the other users
 
 
 Steps to run the project
@@ -25,6 +24,12 @@ Open another tab in the terminal and type following commands
 This is the front page of the website:
 <img width="1498" alt="Screen Shot 2022-12-11 at 2 14 18 PM" src="https://user-images.githubusercontent.com/113392025/206923969-bcbf0d14-8302-4643-8f06-f2c90ddc709a.png">
 
+
+Technologies used to biuld this app:
+
+1. Spring Boot 
+2. React
+3. MySQL 
 
 
 
