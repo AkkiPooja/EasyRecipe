@@ -4,6 +4,7 @@ import Button from '@mui/material/Button';
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 import { Container ,Paper} from '@material-ui/core';
+import TextareaAutosize from '@mui/material/TextareaAutosize';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -95,12 +96,20 @@ const UpdateRecipe = props => {
          onChange={(e)=> setTotalTime(e.target.value)}
         />
 
-        <TextField id="outlined-basic" label="Old_Description" variant="outlined" fullWidth
-         value={recipe.description|| ''}
+        <TextareaAutosize id="outlined-basic" label="Old_Description" variant="outlined" fullWidth
+        aria-label="minimum height"
+        minRows={10}
+        placeholder="Description"
+        style={{ width: 600 }}
+        value={recipe.description|| ''}
         />
         
-        <TextField id="outlined-basic" label="Description" variant="outlined" fullWidth
-         value={description_api}
+        <TextareaAutosize id="outlined-basic" label="Description" variant="outlined" fullWidth
+        aria-label="minimum height"
+        minRows={10}
+        placeholder="Description"
+        style={{ width: 600 }}
+        value={description_api}
          onChange={(e)=> setDescription(e.target.value)}
         />
 

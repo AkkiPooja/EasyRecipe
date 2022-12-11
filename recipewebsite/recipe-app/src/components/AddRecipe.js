@@ -3,7 +3,7 @@ import { useHistory, useLocation } from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import { Container ,Paper, Button} from '@material-ui/core';
-
+import TextareaAutosize from '@mui/material/TextareaAutosize';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -72,7 +72,11 @@ const  AddRecipe = props => {
      value={total_time}
      onChange={(e)=> setTotalTime(e.target.value)}
     />
-    <TextField id="outlined-basic" label="Description" variant="outlined" fullWidth
+    <TextareaAutosize id="outlined-basic" label="Description" variant="outlined" fullWidth
+     aria-label="minimum height"
+     minRows={10}
+     placeholder="Description"
+     style={{ width: 600 }}
      value={description}
      onChange={(e)=> setDescription(e.target.value)}
     />

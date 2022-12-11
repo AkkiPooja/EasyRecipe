@@ -82,9 +82,8 @@ const Login = props =>  {
           console.log(result.status)
            if(result.length ===  undefined){
             alert("No recipe found!")
-           }else{
-              
-               console.log("Here inside the log")
+           }else{ 
+             console.log("Here inside the log")
              console.log(result)
              setRecipes(result);
            }
@@ -122,7 +121,7 @@ const Login = props =>  {
       }
 
   return (
-    <div>
+    <div style={{ backgroundImage: `url(${require("./food.jpeg")})`, width: '100%', height: '800px' }}>
        <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
@@ -149,7 +148,8 @@ const Login = props =>  {
         </Toolbar>
       </AppBar>
     </Box>
-
+    
+   
     {recipes.map(recipe=>(
          <Card sx={{ minWidth: 275 }}  style={{margin:"10px",padding:"15px", textAlign:"left"}} key={recipe.id}>
        <CardContent>
@@ -176,26 +176,32 @@ const Login = props =>  {
     {button?
        <div>
         <TextField id="outlined-basic" label="Username" variant="outlined" 
-     value={name}
-     onChange={(e) => setName(e.target.value)}
-    />
-     <br/>
-     <br/>
-    <TextField id="outlined-password-inpu" label="Password"  type="password" variant="outlined" 
-     value={password}
-     onChange={(e) => setPassword(e.target.value)}
-    />
-    <br/>
-    <br/>
-    <Button variant="contained" color="secondary" onClick={handleEvent}>
-        Submit
-    </Button>
-    <br/>
-    <br/>
-    <Button variant="contained" color="secondary" onClick={registrationPage}>CreateAccount</Button>
-       </div>
-    :<div></div>}
-    </div>
+        style={{
+          backgroundColor: "lightblue"
+      }}
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+        />
+        <br/>
+        <br/>
+        <TextField id="outlined-password-inpu" label="Password"  type="password" variant="outlined" 
+        style={{
+          backgroundColor: "lightblue"
+      }}
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        />
+        <br/>
+        <br/>
+        <Button variant="contained" color="secondary" onClick={handleEvent}>
+            Submit
+        </Button>
+        <br/>
+        <br/>
+        <Button variant="contained" color="secondary" onClick={registrationPage}>CreateAccount</Button>
+          </div>
+        :<div></div>}
+        </div>
     
   );
 }

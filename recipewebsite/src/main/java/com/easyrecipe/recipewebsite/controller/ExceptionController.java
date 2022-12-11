@@ -14,8 +14,4 @@ public class ExceptionController {
         return new ResponseEntity<>("User not found", HttpStatus.NOT_FOUND);
     }
 
-//    @ExceptionHandler(value = RecipeNotFoundException.class)
-//    public ResponseEntity<Object> exception(RecipeNotFoundException exception) {
-//        return new ResponseEntity<>("Recipe not found", HttpStatus.NOT_FOUND);
-//    }
 }

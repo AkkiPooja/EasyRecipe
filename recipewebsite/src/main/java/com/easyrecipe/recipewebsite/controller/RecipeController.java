@@ -49,6 +49,8 @@ public class RecipeController {
 
         if(recipe.get().isEmpty()) throw new RecipeNotFoundException("Recipe Not Found");
 
+        System.out.println("Recipeeeee"+ recipe);
+
         return recipe;
     }
 
