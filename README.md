@@ -22,7 +22,8 @@ Open another tab in the terminal and type following commands
 3. install mysql version 8.0: https://dev.mysql.com/downloads/mysql/
 4. Go to application.properties file under recipewebsite/src/main/resources and update the sql username and password
 5. Go to SQL workbench and excute schema.sql file under src/database
-6. mvnw spring-boot:run
+6. Keep the sql server on
+7. mvnw spring-boot:run
 
 This is the front page of the website:
 <img width="1498" alt="Screen Shot 2022-12-11 at 2 14 18 PM" src="https://user-images.githubusercontent.com/113392025/206923969-bcbf0d14-8302-4643-8f06-f2c90ddc709a.png">
