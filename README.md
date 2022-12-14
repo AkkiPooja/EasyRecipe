@@ -29,6 +29,7 @@ Approach 1 using jar file:
 7. Run this command on the terminal: java -jar target/recipewebsite-0.0.1-SNAPSHOT.jar
 
 
+Approcah 2 using maven commands:
 
 1. Go to EasyRecipe folder
 2. cd recipewebsite
