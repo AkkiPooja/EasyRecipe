@@ -20,7 +20,7 @@ you can run the spring boot by using either of two approaches
 
 Approach 1 using jar file:
 
-1. Go to EasyRecipe folder
+1. cd EasyRecipe (Go to easy recipe folder)
 2. cd recipewebsite
 3. install mysql version 8.0: https://dev.mysql.com/downloads/mysql/
 4. Go to application.properties file under recipewebsite/src/main/resources and update the sql username and password
