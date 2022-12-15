@@ -11,7 +11,7 @@ Open terminal and type the following commands
 2. cd EasyRecipe
 3. cd recipewebsite
 4. cd recipe-app 
-5. npm install --legacy-peer-deps
+5. npm install --legacy-peer-deps. (npm install  --legacy-peer-deps @material-ui/core)
 6. npm start
 7.  your frontend opens at locally <http://localhost:3001/>
 
