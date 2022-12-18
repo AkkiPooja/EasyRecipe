@@ -46,7 +46,7 @@ Using generated JAR file:
 3. cd EasyRecipe (Go to easy recipe folder)
 4. cd recipewebsite
 5. Keep the sql server on
-6. run comman: maven clean install
+6. run comman: mvn clean install
 7. Run this commandl: java -jar target/recipewebsite-0.0.1-SNAPSHOT.jar
 
 Using IDE like IntelliJ
