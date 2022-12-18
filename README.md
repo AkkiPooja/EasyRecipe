@@ -27,9 +27,9 @@ General pre-requsites:
 1. Install JDK 17 or lates versions and set JAVA_HOME variable: https://www.oracle.com/java/technologies/downloads/
 2. Install SQL server and workbench: https://dev.mysql.com/downloads/mysql/ and provide username as: root and password as: 12345678 
 3. Update this user name and password in code repo in: src/main/resources/application.properties
-4. Open SQL workbench and and Run SQL schema to create Database and tables
-   a. In the code repo go to : recipewebsite/src/database
-   b. open the schema.sql and run the commands in SQL workbench
+4. Open SQL workbench and and Run SQL schema to create Database and tables 
+   In the code repo go to : recipewebsite/src/database.
+   open the schema.sql and run the commands in SQL workbench
 
 Approach using mvnw commands:
 
