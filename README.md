@@ -37,7 +37,7 @@ Approach using mvnw commands:
 2. Go to EasyRecipe folder
 3. cd recipewebsite
 4. make sure sql server on
-5. mvnw spring-boot:run
+5. ./mvnw spring-boot:run
 
 Using generated JAR file:
 
