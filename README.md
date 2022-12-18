@@ -54,12 +54,11 @@ Using IDE like IntelliJ
 Pre-requisites: Download IntelliJ community version from here https://www.jetbrains.com/idea/download/#section=windows
 
 1. Open IntelliJ IDE and import the project
-2. click on run icon on top ro run the project
-
-
-
-
-
+2. inside recipewebsite folder, right click on "pom.xml" and choose "+Add as maven project"
+3. Right click on pom.xml -> hover on "maven" -> click on "generate sources and update folders"
+4. On the right side of IDE view click on maven view which opens panel on right side
+5. got to "recipewebsites" -> Lifecycle and double click on "install" to install all depedencies
+6. go to: /src/main/java/com/easyrecipe/recipewebsite/RecipewebsiteApplication.java and run the application
 
 
 
